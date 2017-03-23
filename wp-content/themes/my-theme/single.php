@@ -1,12 +1,26 @@
-із ключових слів за цифрами дізнайся хто веде справжнісіньке війну. Їх троє
-попелиці - 8, павуки - 5, сонечка - 7, мурахи - 6, мухи - 4
-1 2 3 4 5 6 - 4, 5, 6
-7 8 9 10 11 12 4 - 4, 7, 8
-13 8 13 10 14 6 15 16 - 6,8
-
-2,3,8,12 - урок
-4,4,9 - хан
-15,6,3,12 - цирк
-1,10,11 - меч
-14,16,7 - ліс
-13,16,7,8,12 - пісок
+<?php get_header(); ?> 
+<div class="col-md-8"> 
+<h1 class="page-header"> 
+<?php wp_title('', true); ?> </h1> 
+<?php if ( have_posts() ) : ?> 
+<?php while ( have_posts() ) : the_post(); ?> 
+<h2> <a href="<?php the_permalink(); ?>">
+<?php the_title(); ?></a> </h2> 
+<p class="lead"> by <?php the_author_link(); ?> 
+</p> 
+<p> 
+<span class="glyphicon glyphicon-time"></span> 
+Posted on <?php the_time( get_option( 'date_format' ) ); ?>&nbsp;&nbsp; 
+<span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;
+<?php the_category(', '); ?>&nbsp;&nbsp; 
+</p> 
+<hr> 
+<img class="img-responsive" src="http://placehold.it/900x300" alt=""> 
+<hr> 
+<?php the_excerpt(); ?> 
+<a class="btn btn-primary" 
+href="<?php the_permalink(); ?>"> Read More <span class="glyphicon glyphicon-chevron-right"></span> 
+</a> <hr> <?php endwhile; ?> 
+<?php endif; ?> 
+<?php comments_template( '', true ); ?> 
+</div> <?php get_footer(); ?>
